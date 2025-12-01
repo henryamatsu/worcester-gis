@@ -1,0 +1,715 @@
+[
+  {
+    "town": "CHARLTON",
+    "class_counts": {
+      "Very Low": 2353,
+      "Low": 1199,
+      "Moderate": 623,
+      "High": 1286,
+      "Very High": 1103
+    },
+    "avg_score": 2.632388787324802,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "MILLBURY",
+    "class_counts": {
+      "Very Low": 698,
+      "Very High": 2918,
+      "High": 671,
+      "Low": 817,
+      "Moderate": 773
+    },
+    "avg_score": 3.7306448868470308,
+    "suitability_label": "High"
+  },
+  {
+    "town": "AUBURN",
+    "class_counts": {
+      "Very Low": 956,
+      "Very High": 1642,
+      "High": 2078,
+      "Moderate": 1236,
+      "Low": 1161
+    },
+    "avg_score": 3.323625053018521,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "SUTTON",
+    "class_counts": {
+      "Very Low": 1405,
+      "Low": 772,
+      "High": 600,
+      "Moderate": 410,
+      "Very High": 1702
+    },
+    "avg_score": 3.0863162200859073,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "OXFORD",
+    "class_counts": {
+      "Low": 862,
+      "Very Low": 1230,
+      "Moderate": 813,
+      "High": 1251,
+      "Very High": 1899
+    },
+    "avg_score": 3.2852188274153593,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "DOUGLAS",
+    "class_counts": {
+      "Very Low": 2295,
+      "Low": 1188,
+      "Moderate": 782,
+      "High": 374,
+      "Very High": 11
+    },
+    "avg_score": 1.8425806451612903,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "LEICESTER",
+    "class_counts": {
+      "High": 1246,
+      "Very High": 1661,
+      "Low": 854,
+      "Very Low": 816,
+      "Moderate": 674
+    },
+    "avg_score": 3.3964959055418014,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "DUDLEY",
+    "class_counts": {
+      "Low": 754,
+      "Moderate": 778,
+      "High": 1558,
+      "Very Low": 839,
+      "Very High": 1319
+    },
+    "avg_score": 3.3361280487804876,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "WEBSTER",
+    "class_counts": {
+      "Very Low": 897,
+      "Low": 1957,
+      "Moderate": 2512,
+      "High": 1340
+    },
+    "avg_score": 2.6404712198031612,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "BARRE",
+    "class_counts": {
+      "Very Low": 1433,
+      "Moderate": 476,
+      "Low": 798,
+      "High": 268,
+      "Very High": 144
+    },
+    "avg_score": 2.00352677140109,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "TEMPLETON",
+    "class_counts": {
+      "Very Low": 1221,
+      "Low": 804,
+      "High": 847,
+      "Moderate": 372,
+      "Very High": 955
+    },
+    "avg_score": 2.883543700881162,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "PHILLIPSTON",
+    "class_counts": {
+      "Very Low": 952,
+      "High": 67,
+      "Low": 288,
+      "Moderate": 122
+    },
+    "avg_score": 1.5129461161651505,
+    "suitability_label": "Very Low"
+  },
+  {
+    "town": "HUBBARDSTON",
+    "class_counts": {
+      "Very Low": 1375,
+      "Low": 678,
+      "Moderate": 260,
+      "High": 190,
+      "Very High": 116
+    },
+    "avg_score": 1.852233676975945,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "WESTMINSTER",
+    "class_counts": {
+      "Very High": 1685,
+      "High": 633,
+      "Moderate": 315,
+      "Low": 540,
+      "Very Low": 1001
+    },
+    "avg_score": 3.3500239578342117,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "GARDNER",
+    "class_counts": {
+      "Very Low": 880,
+      "Low": 1421,
+      "Moderate": 1956,
+      "High": 975,
+      "Very High": 1908
+    },
+    "avg_score": 3.2254901960784315,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "RUTLAND",
+    "class_counts": {
+      "Very Low": 1792,
+      "Moderate": 871,
+      "Low": 1338,
+      "High": 610,
+      "Very High": 6
+    },
+    "avg_score": 2.0686593025774314,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "PRINCETON",
+    "class_counts": {
+      "Very Low": 884,
+      "Low": 339,
+      "High": 227,
+      "Moderate": 137,
+      "Very High": 353
+    },
+    "avg_score": 2.394845360824742,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "HARVARD",
+    "class_counts": {
+      "Very High": 74,
+      "High": 164,
+      "Low": 824,
+      "Very Low": 1308,
+      "Moderate": 346
+    },
+    "avg_score": 1.8483063328424154,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "LANCASTER",
+    "class_counts": {
+      "Low": 817,
+      "Very Low": 602,
+      "Very High": 867,
+      "Moderate": 503,
+      "High": 452
+    },
+    "avg_score": 3.050910212897254,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "BOLTON",
+    "class_counts": {
+      "Very Low": 506,
+      "High": 506,
+      "Very High": 812,
+      "Low": 399,
+      "Moderate": 275
+    },
+    "avg_score": 3.2878302642113693,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "BERLIN",
+    "class_counts": {
+      "Very Low": 895,
+      "Low": 485,
+      "Moderate": 270,
+      "High": 97
+    },
+    "avg_score": 1.7532913566113337,
+    "suitability_label": "Very Low"
+  },
+  {
+    "town": "CLINTON",
+    "class_counts": {
+      "Low": 1161,
+      "Moderate": 2094,
+      "High": 1559,
+      "Very Low": 241
+    },
+    "avg_score": 2.9833827893175076,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "WORCESTER",
+    "class_counts": {
+      "Low": 10248,
+      "Very Low": 3315,
+      "Moderate": 17588,
+      "High": 14892,
+      "Very High": 1366
+    },
+    "avg_score": 3.0157354088886077,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "HOLDEN",
+    "class_counts": {
+      "Low": 2957,
+      "Very Low": 2274,
+      "Moderate": 2494,
+      "High": 980
+    },
+    "avg_score": 2.250430786904078,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "WEST BOYLSTON",
+    "class_counts": {
+      "Very Low": 667,
+      "High": 709,
+      "Moderate": 536,
+      "Low": 640,
+      "Very High": 706
+    },
+    "avg_score": 3.0451197053406998,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "BOYLSTON",
+    "class_counts": {
+      "Low": 297,
+      "Very High": 1184,
+      "High": 216,
+      "Very Low": 588,
+      "Moderate": 120
+    },
+    "avg_score": 3.461954261954262,
+    "suitability_label": "High"
+  },
+  {
+    "town": "SHREWSBURY",
+    "class_counts": {
+      "Very Low": 1489,
+      "Very High": 823,
+      "High": 2775,
+      "Moderate": 3993,
+      "Low": 4148
+    },
+    "avg_score": 2.7955095252494706,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "GRAFTON",
+    "class_counts": {
+      "Moderate": 1016,
+      "Very Low": 1322,
+      "High": 1149,
+      "Low": 1566,
+      "Very High": 2534
+    },
+    "avg_score": 3.264531435349941,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "PAXTON",
+    "class_counts": {
+      "Low": 362,
+      "Moderate": 323,
+      "Very Low": 483,
+      "High": 594,
+      "Very High": 245
+    },
+    "avg_score": 2.878425510712506,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "WEST BROOKFIELD",
+    "class_counts": {
+      "Very High": 156,
+      "Moderate": 394,
+      "Very Low": 847,
+      "Low": 595,
+      "High": 579
+    },
+    "avg_score": 2.456242707117853,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "WARREN",
+    "class_counts": {
+      "Very Low": 1233,
+      "Moderate": 505,
+      "Low": 601,
+      "High": 267
+    },
+    "avg_score": 1.9255564082885648,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "HARDWICK",
+    "class_counts": {
+      "Very Low": 914,
+      "Low": 285,
+      "Moderate": 159,
+      "High": 132,
+      "Very High": 165
+    },
+    "avg_score": 2.002416918429003,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "NEW BRAINTREE",
+    "class_counts": {
+      "Very Low": 523,
+      "Moderate": 32,
+      "Low": 119,
+      "High": 33,
+      "Very High": 42
+    },
+    "avg_score": 1.6008010680907878,
+    "suitability_label": "Very Low"
+  },
+  {
+    "town": "NORTH BROOKFIELD",
+    "class_counts": {
+      "Very Low": 649,
+      "Low": 298,
+      "Very High": 667,
+      "High": 571,
+      "Moderate": 190
+    },
+    "avg_score": 3.130105263157895,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "BROOKFIELD",
+    "class_counts": {
+      "Very Low": 549,
+      "High": 280,
+      "Low": 362,
+      "Moderate": 334,
+      "Very High": 67
+    },
+    "avg_score": 2.342964824120603,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "SOUTHBRIDGE",
+    "class_counts": {
+      "High": 1349,
+      "Low": 509,
+      "Moderate": 368,
+      "Very Low": 699,
+      "Very High": 2901
+    },
+    "avg_score": 3.9001029866117403,
+    "suitability_label": "High"
+  },
+  {
+    "town": "WESTBOROUGH",
+    "class_counts": {
+      "Moderate": 1545,
+      "High": 1400,
+      "Low": 971,
+      "Very Low": 972,
+      "Very High": 2281
+    },
+    "avg_score": 3.4250244106569956,
+    "suitability_label": "High"
+  },
+  {
+    "town": "UPTON",
+    "class_counts": {
+      "Very Low": 1079,
+      "Low": 911,
+      "High": 629,
+      "Moderate": 483,
+      "Very High": 417
+    },
+    "avg_score": 2.5436203466894005,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "HOPEDALE",
+    "class_counts": {
+      "Very High": 1769,
+      "Low": 244,
+      "Moderate": 164,
+      "High": 241,
+      "Very Low": 102
+    },
+    "avg_score": 4.321825396825397,
+    "suitability_label": "Very High"
+  },
+  {
+    "town": "MILFORD",
+    "class_counts": {
+      "Very High": 3100,
+      "High": 3465,
+      "Very Low": 914,
+      "Low": 1687,
+      "Moderate": 1430
+    },
+    "avg_score": 3.5804077010192525,
+    "suitability_label": "High"
+  },
+  {
+    "town": "MENDON",
+    "class_counts": {
+      "Very High": 556,
+      "Low": 717,
+      "High": 486,
+      "Moderate": 311,
+      "Very Low": 801
+    },
+    "avg_score": 2.7488679902473008,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "NORTHBRIDGE",
+    "class_counts": {
+      "Low": 813,
+      "Moderate": 662,
+      "High": 1101,
+      "Very Low": 1097,
+      "Very High": 2547
+    },
+    "avg_score": 3.512540192926045,
+    "suitability_label": "High"
+  },
+  {
+    "town": "PETERSHAM",
+    "class_counts": {
+      "Low": 186,
+      "Very Low": 759,
+      "High": 62,
+      "Moderate": 60,
+      "Very High": 37
+    },
+    "avg_score": 1.5797101449275361,
+    "suitability_label": "Very Low"
+  },
+  {
+    "town": "EAST BROOKFIELD",
+    "class_counts": {
+      "Moderate": 316,
+      "Low": 368,
+      "High": 204,
+      "Very Low": 387,
+      "Very High": 39
+    },
+    "avg_score": 2.345509893455099,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "SPENCER",
+    "class_counts": {
+      "Low": 1250,
+      "Moderate": 1238,
+      "High": 1023,
+      "Very Low": 1203,
+      "Very High": 571
+    },
+    "avg_score": 2.717880794701987,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "STURBRIDGE",
+    "class_counts": {
+      "Very Low": 1311,
+      "High": 1004,
+      "Moderate": 557,
+      "Low": 890,
+      "Very High": 1032
+    },
+    "avg_score": 2.90738423028786,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "ROYALSTON",
+    "class_counts": {
+      "Very Low": 859,
+      "Moderate": 89,
+      "Low": 196,
+      "High": 96,
+      "Very High": 84
+    },
+    "avg_score": 1.7537764350453173,
+    "suitability_label": "Very Low"
+  },
+  {
+    "town": "WINCHENDON",
+    "class_counts": {
+      "Low": 869,
+      "Very High": 1106,
+      "High": 873,
+      "Very Low": 1443,
+      "Moderate": 702
+    },
+    "avg_score": 2.8658121369917886,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "ASHBURNHAM",
+    "class_counts": {
+      "Very Low": 1423,
+      "Very High": 878,
+      "High": 378,
+      "Low": 776,
+      "Moderate": 504
+    },
+    "avg_score": 2.6241475119979794,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "OAKHAM",
+    "class_counts": {
+      "Very Low": 423,
+      "Low": 135,
+      "Very High": 272,
+      "Moderate": 68,
+      "High": 141
+    },
+    "avg_score": 2.7151106833493746,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "FITCHBURG",
+    "class_counts": {
+      "Very Low": 1407,
+      "High": 2874,
+      "Low": 1944,
+      "Moderate": 2336,
+      "Very High": 4631
+    },
+    "avg_score": 3.5592783505154637,
+    "suitability_label": "High"
+  },
+  {
+    "town": "LEOMINSTER",
+    "class_counts": {
+      "Very Low": 482,
+      "High": 3063,
+      "Moderate": 1096,
+      "Very High": 9164,
+      "Low": 740
+    },
+    "avg_score": 4.3535235476108625,
+    "suitability_label": "Very High"
+  },
+  {
+    "town": "STERLING",
+    "class_counts": {
+      "Very Low": 1622,
+      "Low": 1200,
+      "Moderate": 741,
+      "High": 266,
+      "Very High": 82
+    },
+    "avg_score": 1.9736640245461519,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "UXBRIDGE",
+    "class_counts": {
+      "Very Low": 1350,
+      "Moderate": 619,
+      "High": 1251,
+      "Low": 1106,
+      "Very High": 2004
+    },
+    "avg_score": 3.2295418641390206,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "MILLVILLE",
+    "class_counts": {
+      "High": 189,
+      "Very High": 1029,
+      "Very Low": 50,
+      "Low": 55,
+      "Moderate": 32
+    },
+    "avg_score": 4.5439114391143915,
+    "suitability_label": "Very High"
+  },
+  {
+    "town": "BLACKSTONE",
+    "class_counts": {
+      "Moderate": 862,
+      "Very High": 526,
+      "High": 1143,
+      "Low": 764,
+      "Very Low": 428
+    },
+    "avg_score": 3.1544453397797474,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "NORTHBOROUGH",
+    "class_counts": {
+      "Very Low": 964,
+      "Moderate": 1363,
+      "Low": 1668,
+      "High": 1073,
+      "Very High": 812
+    },
+    "avg_score": 2.847108843537415,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "LUNENBURG",
+    "class_counts": {
+      "Very High": 1008,
+      "Low": 1158,
+      "High": 756,
+      "Very Low": 1698,
+      "Moderate": 656
+    },
+    "avg_score": 2.6622441243366186,
+    "suitability_label": "Moderate"
+  },
+  {
+    "town": "SOUTHBOROUGH",
+    "class_counts": {
+      "Moderate": 994,
+      "Low": 1466,
+      "Very Low": 1317,
+      "High": 259
+    },
+    "avg_score": 2.0483151635282457,
+    "suitability_label": "Low"
+  },
+  {
+    "town": "ATHOL",
+    "class_counts": {
+      "High": 1115,
+      "Low": 1506,
+      "Very Low": 1454,
+      "Moderate": 1691,
+      "Very High": 47
+    },
+    "avg_score": 2.4486495785308793,
+    "suitability_label": "Low"
+  }
+]
