@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DatasetConfig } from "@/lib/datasetConfig";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import PieChart from "./PieChart";
 
 type MapSidebarProps = {
   datasets: Record<string, DatasetConfig>;
@@ -113,86 +114,42 @@ export default function MapSidebar({
             </label>
           </div>
 
-          {/* File Checkboxes */}
+          {/* Pie Chart */}
           {selectedDataset && (
-            <div className="mb-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-semibold text-gray-700">
-                  Suitability Levels
-                </h3>
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleSelectAll}
-                    className="text-xs text-blue-600 hover:text-blue-800 underline"
-                  >
-                    All
-                  </button>
-                  <span className="text-xs text-gray-400">|</span>
-                  <button
-                    onClick={handleDeselectAll}
-                    className="text-xs text-blue-600 hover:text-blue-800 underline"
-                  >
-                    None
-                  </button>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                {selectedDataset.files.map((file) => {
-                  const isEnabled = enabledFiles.has(file.propertyValue);
-                  const color = selectedDataset.colors[file.propertyValue];
-
-                  return (
-                    <label
-                      key={file.propertyValue}
-                      className="flex items-center gap-3 p-2 rounded hover:bg-gray-50 cursor-pointer transition-colors"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={isEnabled}
-                        onChange={(e) =>
-                          handleCheckboxChange(
-                            file.propertyValue,
-                            e.target.checked
-                          )
-                        }
-                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                      />
-                      {color && (
-                        <div
-                          className="w-4 h-4 rounded border border-gray-300"
-                          style={{
-                            backgroundColor: `rgba(${color[0]}, ${color[1]}, ${
-                              color[2]
-                            }, ${color[3] / 255})`,
-                          }}
-                        />
-                      )}
-                      <span className="text-sm text-gray-700">
-                        {file.propertyValue}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
+            <div className="mb-6 p-4 bg-gray-50 rounded-md border border-gray-200">
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">
+                Suitability Distribution
+              </h3>
+              <PieChart
+                slices={selectedDataset.files.map((file) => ({
+                  label: file.propertyValue,
+                  percentage:
+                    selectedDataset.percentages[file.propertyValue] || 0,
+                  color: selectedDataset.colors[file.propertyValue],
+                  enabled: enabledFiles.has(file.propertyValue),
+                }))}
+                onSliceClick={(label) => {
+                  const isCurrentlyEnabled = enabledFiles.has(label);
+                  onFileToggle(label, !isCurrentlyEnabled);
+                }}
+              />
             </div>
           )}
 
           {/* Loading Indicator */}
-          {isPendingUpdate && (
+          {isPendingUpdate ? (
             <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md flex items-center gap-2">
               <div className="w-4 h-4 border-2 border-yellow-600 border-t-transparent rounded-full animate-spin"></div>
               <p className="text-xs text-yellow-800">Updating map layers...</p>
             </div>
+          ) : (
+            <div className="mt-6 p-3 bg-blue-50 rounded-md">
+              <p className="text-xs text-gray-600">
+                <strong>Tip:</strong> Select different property values to
+                visualize specific data layers on the map.
+              </p>
+            </div>
           )}
-
-          {/* Info Section */}
-          <div className="mt-6 p-3 bg-blue-50 rounded-md">
-            <p className="text-xs text-gray-600">
-              <strong>Tip:</strong> Select different property values to
-              visualize specific data layers on the map.
-            </p>
-          </div>
         </div>
       )}
     </div>

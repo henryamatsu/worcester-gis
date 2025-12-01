@@ -10,6 +10,7 @@ export type DatasetConfig = {
   files: DatasetFile[];
   colors: Record<string, [number, number, number, number]>;
   weights: Record<string, number>;
+  percentages: Record<string, number>; // Percentage distribution for pie chart
   aggregatedDataPath?: string; // Path to pre-aggregated town-level data
 };
 
@@ -56,6 +57,13 @@ export const datasets: Record<string, DatasetConfig> = {
       High: 4,
       "Very High": 5,
     },
+    percentages: {
+      "Very Low": 19.94,
+      Low: 20.05,
+      Moderate: 19.77,
+      High: 20.22,
+      "Very High": 20.03,
+    },
   },
   solar: {
     id: "solar",
@@ -98,6 +106,13 @@ export const datasets: Record<string, DatasetConfig> = {
       Moderate: 3,
       High: 4,
       "Very High": 5,
+    },
+    percentages: {
+      "Very Low": 19.96,
+      Low: 20.02,
+      Moderate: 20.11,
+      High: 19.56,
+      "Very High": 20.36,
     },
   },
 };
