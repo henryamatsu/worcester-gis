@@ -50,6 +50,7 @@ export function generateMap(containerId: string): MapInstance {
   let townFeatures: TownFeature[] = [];
 
   map.on("load", async () => {
+    // Remove default place symbol layers
     const layers = map.getStyle().layers ?? [];
     layers.forEach((layer) => {
       if (layer.type === "symbol" && layer.id.startsWith("place_")) {
@@ -79,6 +80,7 @@ export function generateMap(containerId: string): MapInstance {
           data: "/data/boundaries/TOWNSSURVEY_POLYM_wgs84_worcester_only.geojson",
         });
       }
+
       if (!map.getLayer("worcester-towns-outline")) {
         map.addLayer({
           id: "worcester-towns-outline",
@@ -134,14 +136,18 @@ export function generateMap(containerId: string): MapInstance {
             );
             if (!townData) return 0;
 
-            // Check if this town's suitability label is enabled
-            if (!enabledFiles.has(townData.suitability_label)) return 0;
+            if (
+              !enabledFiles.has(townData.suitability_label) ||
+              townData.suitability_label === "Unknown"
+            )
+              return 0;
 
             let totalWeight = 0;
             let totalCount = 0;
             for (const [className, count] of Object.entries(
               townData.class_counts
             )) {
+              if (className === "Unknown") continue; // skip Unknown
               const weight = config.weights[className] ?? 0;
               totalWeight += weight * count;
               totalCount += count;
@@ -154,12 +160,12 @@ export function generateMap(containerId: string): MapInstance {
             );
             if (!townData) return [128, 128, 128, 0];
 
-            // Check if this town's suitability label is enabled
-            if (!enabledFiles.has(townData.suitability_label)) {
-              return [128, 128, 128, 0]; // Fully transparent
-            }
+            if (
+              !enabledFiles.has(townData.suitability_label) ||
+              townData.suitability_label === "Unknown"
+            )
+              return [128, 128, 128, 0];
 
-            // Weighted color average based on dataset colors
             let r = 0,
               g = 0,
               b = 0,
@@ -168,6 +174,7 @@ export function generateMap(containerId: string): MapInstance {
             for (const [className, count] of Object.entries(
               townData.class_counts
             )) {
+              if (className === "Unknown") continue; // skip Unknown
               const color = config.colors[className] ?? [128, 128, 128, 100];
               r += color[0] * count;
               g += color[1] * count;
@@ -199,15 +206,18 @@ export function generateMap(containerId: string): MapInstance {
       }
     } else {
       const includedPropertyValues: string[] = [];
-      const filesToLoad = config.files.filter((file) =>
-        enabledFiles.has(file.propertyValue)
+      const filesToLoad = config.files.filter(
+        (file) =>
+          enabledFiles.has(file.propertyValue) &&
+          file.propertyValue !== "Unknown"
       );
 
       for (const fileConfig of filesToLoad) {
         try {
-          const response = await fetch(fileConfig.path);
-          const json = await response.json();
-          const features: Feature[] = json.features ?? [];
+          const json = await fetch(fileConfig.path).then((res) => res.json());
+          const features: Feature[] = (json.features ?? []).filter(
+            (f: Feature) => fileConfig.propertyValue !== "Unknown"
+          );
 
           displayFeatures.push(...features);
           const propertyValue = fileConfig.propertyValue;
@@ -221,11 +231,18 @@ export function generateMap(containerId: string): MapInstance {
         }
       }
 
+      // Dynamic hex radius
+      const dataSize = displayFeatures.length;
+      let hexRadius = 200;
+      if (dataSize > 500000) hexRadius = 500;
+      else if (dataSize > 200000) hexRadius = 350;
+      else if (dataSize > 100000) hexRadius = 250;
+
       hexLayer = new HexagonLayer<Feature>({
         id: `deck-hexagon-${config.id}`,
         data: displayFeatures,
         getPosition: (d) => d.geometry.coordinates,
-        radius: 200,
+        radius: hexRadius,
         extruded: true,
         elevationScale: 5,
         elevationDomain: [minWeight, maxWeight],
@@ -237,6 +254,7 @@ export function generateMap(containerId: string): MapInstance {
         ),
         getElevationWeight: (_d, { index }) => displayWeights[index] ?? 0,
         elevationAggregation: "MEAN",
+        gpuAggregation: false,
       });
     }
 
@@ -262,7 +280,6 @@ export function generateMap(containerId: string): MapInstance {
       backgroundPadding: [6, 2, 6, 2],
     });
 
-    // Build layers array, filtering out any null/undefined layers
     const layers = [aggregateByTown ? townLayer : hexLayer, textLayer].filter(
       (layer) => layer !== null
     );

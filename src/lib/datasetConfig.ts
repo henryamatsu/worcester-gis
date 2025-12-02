@@ -6,18 +6,35 @@ export type DatasetFile = {
 export type DatasetConfig = {
   id: string;
   name: string;
-  propertyKey: string; // possibly don't need anymore
+  propertyKey: string;
   files: DatasetFile[];
   colors: Record<string, [number, number, number, number]>;
   weights: Record<string, number>;
-  percentages: Record<string, number>; // Percentage distribution for pie chart
-  aggregatedDataPath?: string; // Path to pre-aggregated town-level data
+  percentages: Record<string, number>;
+  aggregatedDataPath?: string;
   legendInfo: {
     totalEntries: number;
     reportPath: string;
     description: string;
   };
 };
+
+function gradientColors(
+  start: [number, number, number],
+  end: [number, number, number],
+  steps: number,
+  alpha: number = 100
+) {
+  const result: [number, number, number, number][] = [];
+  for (let i = 0; i < steps; i++) {
+    const t = i / (steps - 1);
+    const r = Math.round(start[0] + t * (end[0] - start[0]));
+    const g = Math.round(start[1] + t * (end[1] - start[1]));
+    const b = Math.round(start[2] + t * (end[2] - start[2]));
+    result.push([r, g, b, alpha]);
+  }
+  return result;
+}
 
 export const datasets: Record<string, DatasetConfig> = {
   battery: {
@@ -48,20 +65,19 @@ export const datasets: Record<string, DatasetConfig> = {
         propertyValue: "Very High",
       },
     ],
-    colors: {
-      "Very Low": [255, 255, 204, 100],
-      Low: [255, 237, 160, 100],
-      Moderate: [254, 217, 118, 100],
-      High: [252, 141, 89, 100],
-      "Very High": [215, 48, 39, 100],
-    },
-    weights: {
-      "Very Low": 1,
-      Low: 2,
-      Moderate: 3,
-      High: 4,
-      "Very High": 5,
-    },
+    colors: (() => {
+      const lightBlue: [number, number, number] = [200, 200, 255]; // vibrant light blue
+      const darkBlue: [number, number, number] = [50, 50, 200]; // deep blue
+      const gradient = gradientColors(lightBlue, darkBlue, 5, 200);
+      return {
+        "Very Low": gradient[0],
+        Low: gradient[1],
+        Moderate: gradient[2],
+        High: gradient[3],
+        "Very High": gradient[4],
+      };
+    })(),
+    weights: { "Very Low": 1, Low: 2, Moderate: 3, High: 4, "Very High": 5 },
     percentages: {
       "Very Low": 19.94,
       Low: 20.05,
@@ -70,12 +86,13 @@ export const datasets: Record<string, DatasetConfig> = {
       "Very High": 20.03,
     },
     legendInfo: {
-      totalEntries: 1247893,
+      totalEntries: 319619,
       reportPath: "/data/reports/battery_storage_report.pdf",
       description:
         "Analyzes potential locations for battery energy storage systems across Worcester County based on proximity to infrastructure, land use, and grid connectivity.",
     },
   },
+
   solar: {
     id: "solar",
     name: "Solar Analysis",
@@ -104,20 +121,19 @@ export const datasets: Record<string, DatasetConfig> = {
         propertyValue: "Very High",
       },
     ],
-    colors: {
-      "Very Low": [255, 255, 255, 150],
-      Low: [222, 235, 247, 150],
-      Moderate: [198, 219, 239, 150],
-      High: [158, 202, 225, 150],
-      "Very High": [33, 113, 181, 150],
-    },
-    weights: {
-      "Very Low": 1,
-      Low: 2,
-      Moderate: 3,
-      High: 4,
-      "Very High": 5,
-    },
+    colors: (() => {
+      const yellow: [number, number, number] = [255, 200, 0]; // light red
+      const darkRed: [number, number, number] = [150, 0, 0]; // bright red
+      const gradient = gradientColors(yellow, darkRed, 5, 200);
+      return {
+        "Very Low": gradient[0],
+        Low: gradient[1],
+        Moderate: gradient[2],
+        High: gradient[3],
+        "Very High": gradient[4],
+      };
+    })(),
+    weights: { "Very Low": 1, Low: 2, Moderate: 3, High: 4, "Very High": 5 },
     percentages: {
       "Very Low": 19.96,
       Low: 20.02,
@@ -126,10 +142,79 @@ export const datasets: Record<string, DatasetConfig> = {
       "Very High": 20.36,
     },
     legendInfo: {
-      totalEntries: 982456,
+      totalEntries: 348668,
       reportPath: "/data/reports/Solar_siting_report.pdf",
       description:
         "Evaluates rooftop solar panel suitability across Worcester County based on infrastructure proximity, environmental constraints, and equity considerations.",
+    },
+  },
+
+  EV: {
+    id: "EV",
+    name: "EV Charging Analysis",
+    propertyKey: "Class",
+    aggregatedDataPath:
+      "/data/EV_analysis/EV_aggregated_suitability_scored.json",
+    files: [
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_Very_Low_stripped.geojson",
+        propertyValue: "Very Low",
+      },
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_Low_stripped.geojson",
+        propertyValue: "Low",
+      },
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_Moderate_stripped.geojson",
+        propertyValue: "Moderate",
+      },
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_High_stripped.geojson",
+        propertyValue: "High",
+      },
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_Very_High_stripped.geojson",
+        propertyValue: "Very High",
+      },
+      {
+        path: "/data/EV_analysis/EV_Analysis_wgs84_Unknown_stripped.geojson",
+        propertyValue: "Unknown",
+      },
+    ],
+    colors: (() => {
+      const lightGreen: [number, number, number] = [200, 255, 200]; // light green
+      const darkGreen: [number, number, number] = [0, 100, 0]; // vivid green
+      const gradient = gradientColors(lightGreen, darkGreen, 5, 200);
+      return {
+        "Very Low": gradient[0],
+        Low: gradient[1],
+        Moderate: gradient[2],
+        High: gradient[3],
+        "Very High": gradient[4],
+        Unknown: [128, 128, 128, 30],
+      };
+    })(),
+    weights: {
+      "Very Low": 1,
+      Low: 2,
+      Moderate: 3,
+      High: 4,
+      "Very High": 5,
+      Unknown: 0,
+    },
+    percentages: {
+      "Very Low": 18.58,
+      Low: 20.96,
+      Moderate: 19.64,
+      High: 18.51,
+      "Very High": 7.45,
+      Unknown: 14.87,
+    },
+    legendInfo: {
+      totalEntries: 624520,
+      reportPath: "/data/reports/EV_Charging_Siting_Analysis.pdf",
+      description:
+        "Identifies optimal locations for EV charging stations across Worcester County based on population density.",
     },
   },
 };
