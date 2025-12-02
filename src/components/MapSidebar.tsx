@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DatasetConfig } from "@/lib/datasetConfig";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PieChart from "./PieChart";
@@ -27,6 +27,7 @@ export default function MapSidebar({
   onAggregationToggle,
 }: MapSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(true);
 
   const selectedDataset = datasets[selectedDatasetId];
 
@@ -46,6 +47,17 @@ export default function MapSidebar({
     });
   };
 
+  // Toggle collapse with delayed content population
+  const toggleCollapse = () => {
+    if (isCollapsed) {
+      setIsCollapsed(false);
+      setTimeout(() => setIsContentVisible(true), 300); // delay matches transition duration
+    } else {
+      setIsContentVisible(false); // hide content immediately
+      setIsCollapsed(true);
+    }
+  };
+
   return (
     <div
       className={`absolute top-0 left-0 h-full bg-white shadow-lg transition-all duration-300 z-10 ${
@@ -54,7 +66,7 @@ export default function MapSidebar({
     >
       {/* Toggle Button */}
       <button
-        onClick={() => setIsCollapsed(!isCollapsed)}
+        onClick={toggleCollapse}
         className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md hover:bg-gray-100 transition-colors"
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
@@ -66,7 +78,7 @@ export default function MapSidebar({
       </button>
 
       {/* Sidebar Content */}
-      {!isCollapsed && (
+      {isContentVisible && (
         <div className="p-4 h-full overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 text-gray-800">
             Layer Controls

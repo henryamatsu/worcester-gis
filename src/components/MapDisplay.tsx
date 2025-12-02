@@ -3,6 +3,7 @@
 import { generateMap, MapInstance } from "@/lib/map";
 import { useEffect, useRef, useState } from "react";
 import MapSidebar from "./MapSidebar";
+import DatasetLegend from "./DatasetLegend";
 import { datasets } from "@/lib/datasetConfig";
 
 export default function MapDisplay() {
@@ -104,6 +105,7 @@ export default function MapDisplay() {
         aggregateByTown={aggregateByTown}
         onAggregationToggle={setAggregateByTown}
       />
+      <DatasetLegend dataset={datasets[selectedDatasetId]} />
       <div ref={mapElement} id={mapId} className="w-full h-full"></div>
     </div>
   );

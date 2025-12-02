@@ -12,6 +12,11 @@ export type DatasetConfig = {
   weights: Record<string, number>;
   percentages: Record<string, number>; // Percentage distribution for pie chart
   aggregatedDataPath?: string; // Path to pre-aggregated town-level data
+  legendInfo: {
+    totalEntries: number;
+    reportPath: string;
+    description: string;
+  };
 };
 
 export const datasets: Record<string, DatasetConfig> = {
@@ -64,6 +69,12 @@ export const datasets: Record<string, DatasetConfig> = {
       High: 20.22,
       "Very High": 20.03,
     },
+    legendInfo: {
+      totalEntries: 1247893,
+      reportPath: "/data/reports/battery_storage_report.pdf",
+      description:
+        "Analyzes potential locations for battery energy storage systems across Worcester County based on proximity to infrastructure, land use, and grid connectivity.",
+    },
   },
   solar: {
     id: "solar",
@@ -113,6 +124,12 @@ export const datasets: Record<string, DatasetConfig> = {
       Moderate: 20.11,
       High: 19.56,
       "Very High": 20.36,
+    },
+    legendInfo: {
+      totalEntries: 982456,
+      reportPath: "/data/reports/Solar_siting_report.pdf",
+      description:
+        "Evaluates rooftop solar panel suitability across Worcester County based on infrastructure proximity, environmental constraints, and equity considerations.",
     },
   },
 };
